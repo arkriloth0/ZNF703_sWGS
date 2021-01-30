@@ -12,15 +12,15 @@ MAP=$2
 SAMPLE=`head -n $SLURM_ARRAY_TASK_ID $IDS | tail -n 1`
 
 # bwa-indexed hg38 analysis set
-hg38_ref=
+HG38_REF=/scratcha/cclab_tmp/lui01/hg38/analysis_set_index_bwa/GCA_000001405.15_GRCh38_full_plus_hs38d1_analysis_set.fna.gz
 
 for FASTQ in `grep ^$SAMPLE $MAP | cut -f 2`
 do
   trim_galore --hardtrim5 50 $FASTQ
   BFASTQ=${FASTQ%.fastq.gz}
   COMBINED=${SAMPLE}_${BFASTQ}
-  bwa aln -n 2 -q 40 $hg38_ref $BFASTQ.50bp_5prime.fq.gz > $COMBINED.sai
-  bwa samse $hg38_ref $COMBINED.sai $BFASTQ.50bp_5prime.fq.gz | samtools view -hb | samtools sort - > ${COMBINED}.bam
+  bwa aln -n 2 -q 40 $HG38_REF $BFASTQ.50bp_5prime.fq.gz > $COMBINED.sai
+  bwa samse $HG38_REF $COMBINED.sai $BFASTQ.50bp_5prime.fq.gz | samtools view -hb | samtools sort - > ${COMBINED}.bam
   samtools index $COMBINED.bam
 done
 
