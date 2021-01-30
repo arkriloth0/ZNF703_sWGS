@@ -3,3 +3,7 @@
 .RData
 .Ruserdata
 *.index
+*.fastq
+*.fq
+*.fastq.gz
+*.fq.gz
