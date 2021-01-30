@@ -17,5 +17,5 @@ hg38_ref=
 for FASTQ in `grep ^$SAMPLE $MAP | cut -f 2`
 do
   echo $SAMPLE
-  echo FASTQ
+  echo $FASTQ
 done
