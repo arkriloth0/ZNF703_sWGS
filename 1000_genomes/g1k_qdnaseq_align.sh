@@ -6,6 +6,8 @@
 #SBATCH -o %A_%a.g1k_qdnaseq.out
 #SBATCH -e %A_%a.g1k_qdnaseq.err
 
+conda activate DNAseq
+
 IDS=$1
 MAP=$2
 
