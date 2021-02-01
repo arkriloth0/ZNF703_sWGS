@@ -12,7 +12,7 @@ MAP=$2
 SAMPLE=`head -n $SLURM_ARRAY_TASK_ID $IDS | tail -n 1`
 
 # bwa-indexed hg38 analysis set
-HG38_REF=/scratcha/cclab_tmp/lui01/hg38/analysis_set_index_bwa/GCA_000001405.15_GRCh38_full_plus_hs38d1_analysis_set.fna.gz
+HG38_REF=/scratcha/cclab_tmp/lui01/hg38/analysis_set_index_bwa/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fna
 
 #Assuming 20-core CPU
 for FASTQ in `grep ^$SAMPLE $MAP | cut -f 2`
